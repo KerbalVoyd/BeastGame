@@ -3,9 +3,8 @@ package com.codebind;
 import javax.swing.*;
 
 public class App {
-    private JButton button1;
     private JPanel panel1;
-    private JTextField textField1;
+    private JButton button1;
 
     public static void main(String[] args){
         try {
