@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class App {
     private JPanel panel1;
-    private JButton button1;
+    private JCheckBox checkForFunnyCheckBox;
 
     public static void main(String[] args){
         try {
@@ -20,4 +20,5 @@ public class App {
         frame.pack();
         frame.setVisible(true);
     }
+
 }
