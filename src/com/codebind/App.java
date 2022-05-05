@@ -3,6 +3,7 @@ package com.codebind;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class App {
     private JPanel panel1;
@@ -32,7 +33,11 @@ public class App {
         frame.pack();
         frame.setVisible(true);
 
-        var Dragon = new BlueDragon("Tom", 4, 6, 3, 8, 1, 8);
+        var PseudoCodeDragon = new BlueDragon("Tom","Water", "None", "Dragon", 1, 1, 1, 1, 1, 1, 1, 1);
+        var PseudoCodeSlash = new Move(true, false, 1, 1, "Slashing", "None", 5, 90);
+
+        ArrayList<Move> moveList = new ArrayList<Move>();
+        moveList.add(PseudoCodeSlash);
     }
 
 }
