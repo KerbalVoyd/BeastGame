@@ -7,17 +7,8 @@ import java.util.ArrayList;
 
 public class App {
     private JPanel panel1;
-    private JTextField textField1;
     private JButton button1;
-
-    public App() {
-        button1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "hi"); //shows stuff
-            }
-        });
-    }
+    public static BlueDragon PseudoCodeDragon = new BlueDragon("Tom","Water", "None", "Dragon", 1, 1, 1, 1, 1, 1, 1, 1);
 
     public static void main(String[] args){
         try {
@@ -33,11 +24,22 @@ public class App {
         frame.pack();
         frame.setVisible(true);
 
-        var PseudoCodeDragon = new BlueDragon("Tom","Water", "None", "Dragon", 1, 1, 1, 1, 1, 1, 1, 1);
         var PseudoCodeSlash = new Move(true, false, 1, 1, "Slashing", "None", 5, 90);
 
-        ArrayList<Move> moveList = new ArrayList<Move>();
-        moveList.add(PseudoCodeSlash);
+        PseudoCodeDragon.moveList.add(PseudoCodeSlash);
+        PseudoCodeDragon.moveList.get(0).attack();
+        ArrayList<Move> moveIndex = new ArrayList<Move>();
+        moveIndex.add(PseudoCodeSlash);
     }
+    public App() {
+        button1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, PseudoCodeDragon.moveList.get(0).attack()); //shows stuff
+            }
+        });
+    }
+
+
 
 }

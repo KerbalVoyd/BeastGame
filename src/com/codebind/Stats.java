@@ -1,5 +1,7 @@
 package com.codebind;
 
+import java.util.ArrayList;
+
 public abstract class Stats {
     private String _name;
     private int _HP;
@@ -13,6 +15,23 @@ public abstract class Stats {
     private String _TYPE1;
     private String _TYPE2;
     private int _SIZE;
+
+     ArrayList<Move> moveList = new ArrayList<Move>();
+
+    public Stats(String name, String TYPE1, String TYPE2, String SPECIES, int HP, int SPEED, int STRENGTH, int MAGIC, int MAGIC_ARMOUR, int PHYSICAL_ARMOUR, int INTEL, int SIZE) {
+        this._name = name;
+        this._SPECIES = SPECIES;
+        this._TYPE1 = TYPE1;
+        this._TYPE2 = TYPE2;
+        this._HP = HP;
+        this._SPEED = SPEED;
+        this._STRENGTH = STRENGTH;
+        this._MAGIC = MAGIC;
+        this._MAGIC_ARMOUR = MAGIC_ARMOUR;
+        this._PHYSICAL_ARMOUR = PHYSICAL_ARMOUR;
+        this._INTEL = INTEL;
+        this._SIZE = SIZE;
+    }
 
     public String name() {  //important
         return _name;
@@ -74,18 +93,5 @@ public abstract class Stats {
     - SLASHING
 
     ======================================================*/
-    public Stats(String name, String TYPE1, String TYPE2, String SPECIES, int HP, int SPEED, int STRENGTH, int MAGIC, int MAGIC_ARMOUR, int PHYSICAL_ARMOUR, int INTEL, int SIZE) {
-        this._name = name;
-        this._SPECIES = SPECIES;
-        this._TYPE1 = TYPE1;
-        this._TYPE2 = TYPE2;
-        this._HP = HP;
-        this._SPEED = SPEED;
-        this._STRENGTH = STRENGTH;
-        this._MAGIC = MAGIC;
-        this._MAGIC_ARMOUR = MAGIC_ARMOUR;
-        this._PHYSICAL_ARMOUR = PHYSICAL_ARMOUR;
-        this._INTEL = INTEL;
-        this._SIZE = SIZE;
-    }
+
 }

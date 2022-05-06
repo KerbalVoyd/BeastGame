@@ -6,4 +6,6 @@ public class BlueDragon extends Stats {
         super(name, TYPE1, TYPE2, SPECIES, HP, SPEED, STRENGTH, MAGIC, MAGIC_ARMOUR, PHYSICAL_ARMOUR, INTEL, SIZE);
     }
 
+
+
 }
