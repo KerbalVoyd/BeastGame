@@ -2,6 +2,7 @@ package com.codebind;
 
 public abstract class MoveAttributes {
 
+    private String _name;
     private Boolean _attack;
     private Boolean _buffDebuff;
     private int _time; //day = 1 or night = 2
@@ -11,6 +12,9 @@ public abstract class MoveAttributes {
     private int _range; //if less than 10 feet is melee
     private int _accuracy;
 
+    public String name() {  //important
+        return _name;
+    }
     public Boolean attack() {  //important
         return _attack;
     }
@@ -36,8 +40,9 @@ public abstract class MoveAttributes {
         return _accuracy;
     }
 
-    public MoveAttributes(Boolean attack, boolean buffDebuff, int time, int damage, String damageType, String elementalType, int range, int accuracy) {
+    public MoveAttributes(String name, boolean attack, boolean buffDebuff, int time, int damage, String damageType, String elementalType, int range, int accuracy) {
 
+        this._name = name;
         this._attack = attack;
         this._buffDebuff = buffDebuff;
         this._time = time;

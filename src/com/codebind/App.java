@@ -3,14 +3,9 @@ package com.codebind;
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.table.DefaultTableModel;
-import java.awt.*;
 import java.awt.event.*;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.nio.charset.StandardCharsets;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.*;
 
 public class App {
     private JPanel panel1;
@@ -19,24 +14,20 @@ public class App {
     private JTable baseStats;
     private JButton button1;
     private JButton button2;
-    private JList list1;
+    private JList JMoveList;
     private JScrollBar scrollBar1;
+    private JButton addMoveButton;
     public static BlueDragon PseudoCodeDragon = new BlueDragon("Tom","Water", "None", "Dragon", 1, 1, 1, 1, 1, 1, 1, 1);
-
+    public static ArrayList<Move> moveIndex = new ArrayList<Move>();
     public App() {
 
-        button1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, PseudoCodeDragon.moveList.get(0).attack()); //shows stuff
-            }
-        });
-        list1.addListSelectionListener(new ListSelectionListener() {
+        JMoveList.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
-                if (list1.isSelectionEmpty()) {
-                    //put stuff I want to do with the selected array thing
-                }
+                //if (moveList.getSelectedIndex() == -1) {
+//
+                //    //make button to add move to arsenal false
+                //}
             }
         });
     }
@@ -52,18 +43,20 @@ public class App {
         JFrame.setDefaultLookAndFeelDecorated(false);
         JFrame frame = new JFrame("App"); //Define JFrame
         frame.setContentPane(new App().panel1); //call panel1 inside frame
-        //frame.getContentPane().add()
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
 
 
 
-        var PseudoCodeSlash = new Move(true, false, 1, 1, "Slashing", "None", 5, 90);
+        var PseudoCodeSlash = new Move("Slash", true, false, 1, 1, "Slashing", "None", 5, 90);
+        var PseudoCodeBite = new Move("Bite", true, false, 1, 1, "Piercing", "None", 5, 90);
+        var PseudoCodeBash = new Move("Bash", true, false, 1, 1, "Bludgeoning", "None", 5, 90);
 
         PseudoCodeDragon.moveList.add(PseudoCodeSlash);
-        PseudoCodeDragon.moveList.get(0).attack();
-        ArrayList<Move> moveIndex = new ArrayList<Move>();
+        PseudoCodeDragon.moveList.add(PseudoCodeBash);
+        PseudoCodeDragon.moveList.add(PseudoCodeBite);
+
         moveIndex.add(PseudoCodeSlash);
 
     }
@@ -71,12 +64,20 @@ public class App {
     private void createUIComponents() {
         // TODO: place custom component creation code here
         //THIS IS FIRE MAKE SURE TO UTILIZE CUSTOM CODE MORE
+        ArrayList<String> tempMoveIndex = new ArrayList<String>();
+        for (int i = 0; i < moveIndex.size(); i++) {
 
-        String[] test = {"lol", "bruh", "zzz"};
-        list1 = new JList(test); //data has type Object[]
-        list1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        list1.setLayoutOrientation(JList.HORIZONTAL_WRAP);
-        list1.setVisibleRowCount(9);
+            tempMoveIndex.add(PseudoCodeDragon.moveList.get(i).name());
+
+        }
+        //String[] test = {"lol", "bruh", "zzz"};
+        String[] test = new String[10];
+
+        test[0] = PseudoCodeDragon.moveList.get(0).name(); //doesnt work because we make JMoveList before we make anything else
+        JMoveList = new JList(test); //data has type Object[]
+        JMoveList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        JMoveList.setLayoutOrientation(JList.HORIZONTAL_WRAP);
+        JMoveList.setVisibleRowCount(9);
 
     }
 }
