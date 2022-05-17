@@ -3,16 +3,17 @@ package com.codebind;
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import java.awt.event.*;
-import java.lang.reflect.Array;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
 import java.util.ArrayList;
 
 public class App {
     private JPanel panel1;
     private JTextField beastName;
-    private JComboBox comboBox1;
+    private JComboBox beastPicker;
     private JTable baseStats;
-    private JButton button1;
+    private JButton startButton;
     private JButton button2;
     private JList JMoveList;
     private JScrollBar scrollBar1;
@@ -28,6 +29,34 @@ public class App {
 //
                 //    //make button to add move to arsenal false
                 //}
+            }
+        });
+
+
+        startButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+       /* beastPicker.addActionListener(new ActionListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (e.getStateChange() == ItemEvent.SELECTED) {
+                    if (!beastPicker.getSelectedItem()) {
+
+                    }
+                }
+            }
+        });*/
+        startButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DefaultListModel DLM = new DefaultListModel();
+                DLM.addElement(PseudoCodeDragon.moveList.get(0).name());
+                DLM.addElement(PseudoCodeDragon.moveList.get(1).name());
+                DLM.addElement(PseudoCodeDragon.moveList.get(2).name());
+                JMoveList.setModel(DLM);
             }
         });
     }
@@ -64,17 +93,8 @@ public class App {
     private void createUIComponents() {
         // TODO: place custom component creation code here
         //THIS IS FIRE MAKE SURE TO UTILIZE CUSTOM CODE MORE
-        ArrayList<String> tempMoveIndex = new ArrayList<String>();
-        for (int i = 0; i < moveIndex.size(); i++) {
 
-            tempMoveIndex.add(PseudoCodeDragon.moveList.get(i).name());
-
-        }
-        //String[] test = {"lol", "bruh", "zzz"};
-        String[] test = new String[10];
-
-        test[0] = PseudoCodeDragon.moveList.get(0).name(); //doesnt work because we make JMoveList before we make anything else
-        JMoveList = new JList(test); //data has type Object[]
+        JMoveList = new JList(); //data has type Object[]
         JMoveList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         JMoveList.setLayoutOrientation(JList.HORIZONTAL_WRAP);
         JMoveList.setVisibleRowCount(9);

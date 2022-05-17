@@ -15,10 +15,10 @@ public abstract class MoveAttributes {
     public String name() {  //important
         return _name;
     }
-    public Boolean attack() {  //important
+    public boolean attack() {  //important
         return _attack;
     }
-    public Boolean buffDebuff() {  //important
+    public boolean buffDebuff() {  //important
         return _buffDebuff;
     }
     public int time() {  //important
