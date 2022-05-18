@@ -4,64 +4,62 @@ import java.util.ArrayList;
 
 public abstract class Stats {
     private String _name;
-    private int _HP;
-    private int _SPEED;
-    private int _STRENGTH;
-    private int _MAGIC;
-    private int _MAGIC_ARMOUR;
-    private int _PHYSICAL_ARMOUR;
-    private int _INTEL;
-    private String _SPECIES;
-    private String _TYPE1;
-    private String _TYPE2;
-    private int _SIZE;
+    private int _hp;
+    private int _speed;
+    private int _strength;
+    private int _magic;
+    private int _magic_armour;
+    private int _physical_armour;
+    private int _intel;
+    private String _species;
+    private String _type1;
+    private String _type2;
+    private int _size;
 
      ArrayList<Move> moveList = new ArrayList<Move>();
 
-    public Stats(String name, String TYPE1, String TYPE2, String SPECIES, int HP, int SPEED, int STRENGTH, int MAGIC, int MAGIC_ARMOUR, int PHYSICAL_ARMOUR, int INTEL, int SIZE) {
+    public Stats(String name, String type1, String type2, String species, int hp, int speed, int strength, int magic, int magic_armour, int physical_armour, int intel, int size) {
         this._name = name;
-        this._SPECIES = SPECIES;
-        this._TYPE1 = TYPE1;
-        this._TYPE2 = TYPE2;
-        this._HP = HP;
-        this._SPEED = SPEED;
-        this._STRENGTH = STRENGTH;
-        this._MAGIC = MAGIC;
-        this._MAGIC_ARMOUR = MAGIC_ARMOUR;
-        this._PHYSICAL_ARMOUR = PHYSICAL_ARMOUR;
-        this._INTEL = INTEL;
-        this._SIZE = SIZE;
+        this._species = species;
+        this._type1 = type1;
+        this._type2 = type2;
+        this._hp = hp;
+        this._speed = speed;
+        this._strength = strength;
+        this._magic = magic;
+        this._magic_armour = magic_armour;
+        this._physical_armour = physical_armour;
+        this._intel = intel;
+        this._size = size;
     }
 
     public String name() {  //important
         return _name;
     }
-    public int HP() {
-        return _HP;
+    public int hp() {
+        return _hp;
     }
-    public int SPEED() {
-        return _SPEED;
+    public int speed() {
+        return _speed;
     }
-    public int POWER() {
-        return _STRENGTH;
+    public int strength() {
+        return _strength;
     }
-    public int MAGIC() { return _MAGIC; }
-    public int MAGIC_ARMOUR() { return _MAGIC_ARMOUR; }
-    public int PHYSICAL_ARMOUR() { return _PHYSICAL_ARMOUR; }
-    public int INTEL() {
-        return _INTEL;
+    public int magic() { return _magic; }
+    public int magic_armour() { return _magic_armour; }
+    public int physical_armour() { return _physical_armour; }
+    public int intel() { return _intel; }
+    public String species() {
+        return _species;
     }
-    public String SPECIES() {
-        return _SPECIES;
+    public String type1() {
+        return _type1;
     }
-    public String TYPE1() {
-        return _TYPE1;
+    public String type2() {
+        return _type2;
     }
-    public String TYPE2() {
-        return _TYPE2;
-    }
-    public int SIZE() {
-        return _SIZE;
+    public int size() {
+        return _size;
     }
 
     public Stats() {
@@ -72,26 +70,32 @@ public abstract class Stats {
     ALL ELEMENTAL TYPES POSSIBLE
     - FIRE
     - WATER
-    - AIR
+    - ICE
     - ROCK
     - NECROTIC
     - MAGICAL
     - HOLY
     - DARK
     - RADIANT
+    - NATURE
 
-    ALL DAMAGE TYPES
+    ALL PHYSICAL DAMAGE TYPES
     - ACID
     - BLUDGEONING
-    - FIRE
-    - LIGHTNING
-    - NECROTIC
     - PIERCING
     - POISON
+    - SLASHING
+    - BURNING
+    - COLD
+
+
+    ALL ELEMENTAL DAMAGE TYPES
+    - LIGHTNING
+    - NECROTIC
     - PSYCHIC
     - RADIANT
-    - SLASHING
-
+    - DARK
+    - HOLY
     ======================================================*/
 
 }
