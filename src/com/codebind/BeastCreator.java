@@ -27,6 +27,7 @@ public class BeastCreator {
         App.beastIndex.add(argos);
 
         Albion albion = new Albion("name", "Holy", "Magical", "Albion", 230, 220, 70, 230, 60, 90, 200, 160);
+        App.beastIndex.add(albion);
     }
 
 }

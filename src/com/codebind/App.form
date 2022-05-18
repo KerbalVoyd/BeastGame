@@ -244,6 +244,8 @@
             <item value="Blue Dragon"/>
             <item value="Red Dragon"/>
             <item value="White Dragon"/>
+            <item value="Argos"/>
+            <item value="Albion"/>
           </model>
         </properties>
       </component>
