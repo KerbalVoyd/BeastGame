@@ -1,49 +1,64 @@
 package com.codebind;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-import java.awt.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ComponentAdapter;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.nio.charset.StandardCharsets;
+import java.awt.event.ItemEvent;
 import java.util.ArrayList;
-import java.util.*;
 
 public class App {
     private JPanel panel1;
     private JTextField beastName;
-    private JComboBox comboBox1;
+    private JComboBox beastPicker;
     private JTable baseStats;
-    private JButton button1;
+    private JButton startButton;
+    private JButton button2;
+    private JList JMoveList;
+    private JScrollBar scrollBar1;
+    private JButton addMoveButton;
     public static BlueDragon PseudoCodeDragon = new BlueDragon("Tom","Water", "None", "Dragon", 1, 1, 1, 1, 1, 1, 1, 1);
-
+    public static ArrayList<Move> moveIndex = new ArrayList<Move>();
     public App() {
 
-        String[] columnNames = {"Stat", "Value"};
-
-        String[][] data = {
-                {"Attack", "5"},
-                {"Int", "5"},
-                {"HP", "5"},
-                {"SOMETHING", "5"},
-                {"HAHA", "5"},
-
-        };
-
-        baseStats = new JTable(data, columnNames);
-        baseStats.setPreferredScrollableViewportSize(new Dimension(100, 50));
-        baseStats.setFillsViewportHeight(true);
-        button1.addActionListener(new ActionListener() {
+        JMoveList.addListSelectionListener(new ListSelectionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, PseudoCodeDragon.moveList.get(0).attack()); //shows stuff
+            public void valueChanged(ListSelectionEvent e) {
+                //if (moveList.getSelectedIndex() == -1) {
+//
+                //    //make button to add move to arsenal false
+                //}
             }
         });
 
 
+        startButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+       /* beastPicker.addActionListener(new ActionListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (e.getStateChange() == ItemEvent.SELECTED) {
+                    if (!beastPicker.getSelectedItem()) {
+
+                    }
+                }
+            }
+        });*/
+        startButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DefaultListModel DLM = new DefaultListModel();
+                DLM.addElement(PseudoCodeDragon.moveList.get(0).name());
+                DLM.addElement(PseudoCodeDragon.moveList.get(1).name());
+                DLM.addElement(PseudoCodeDragon.moveList.get(2).name());
+                JMoveList.setModel(DLM);
+            }
+        });
     }
     public static void main(String[] args){
         try {
@@ -51,6 +66,8 @@ public class App {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+
+
 
         JFrame.setDefaultLookAndFeelDecorated(false);
         JFrame frame = new JFrame("App"); //Define JFrame
@@ -61,29 +78,26 @@ public class App {
 
 
 
-        var PseudoCodeSlash = new Move(true, false, 1, 1, "Slashing", "None", 5, 90);
+        var PseudoCodeSlash = new Move("Slash", true, false, 1, 1, "Slashing", "None", 5, 90);
+        var PseudoCodeBite = new Move("Bite", true, false, 1, 1, "Piercing", "None", 5, 90);
+        var PseudoCodeBash = new Move("Bash", true, false, 1, 1, "Bludgeoning", "None", 5, 90);
 
         PseudoCodeDragon.moveList.add(PseudoCodeSlash);
-        PseudoCodeDragon.moveList.get(0).attack();
-        ArrayList<Move> moveIndex = new ArrayList<Move>();
+        PseudoCodeDragon.moveList.add(PseudoCodeBash);
+        PseudoCodeDragon.moveList.add(PseudoCodeBite);
+
         moveIndex.add(PseudoCodeSlash);
+
     }
 
     private void createUIComponents() {
         // TODO: place custom component creation code here
+        //THIS IS FIRE MAKE SURE TO UTILIZE CUSTOM CODE MORE
 
-
-
-
-
-
-        DefaultTableModel tblModel = (DefaultTableModel)baseStats.getModel();
-
-        //String tblStat = tblModel.getValueAt(baseStats.getSelectedRow(), 0).toString();
-        //String tblNum = tblModel.getValueAt(baseStats.getSelectedRow(), 1).toString();
-//
-//
-        //baseStats.setValueAt("tester", 0, 1);
+        JMoveList = new JList(); //data has type Object[]
+        JMoveList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        JMoveList.setLayoutOrientation(JList.HORIZONTAL_WRAP);
+        JMoveList.setVisibleRowCount(9);
 
     }
 }
