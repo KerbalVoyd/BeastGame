@@ -5,12 +5,13 @@ public abstract class MoveAttributes {
     private String _name;
     private Boolean _attack;
     private Boolean _buffDebuff;
-    private int _time; //day = 1 or night = 2
+    private int _time; //day = 1 or night = 2 doesn't matter = -1
     private int _damage;
     private String _damageType; //physical damage type, Refer to large comment in Class Stats
     private String _elementalType; //magical damage type, Refer to large comment in Class Stats
     private int _range; //if less than 10 feet is melee
     private int _accuracy;
+    private int _cooldown; //make sure peopel can't spam moves
 
     public String name() {  //important
         return _name;
@@ -39,8 +40,11 @@ public abstract class MoveAttributes {
     public int accuracy() {  //important
         return _accuracy;
     }
+    public int cooldown() {
+        return _cooldown;
+    }
 
-    public MoveAttributes(String name, boolean attack, boolean buffDebuff, int time, int damage, String damageType, String elementalType, int range, int accuracy) {
+    public MoveAttributes(String name, boolean attack, boolean buffDebuff, int time, int damage, String damageType, String elementalType, int range, int accuracy, int cooldown) {
 
         this._name = name;
         this._attack = attack;
@@ -51,6 +55,7 @@ public abstract class MoveAttributes {
         this._elementalType = elementalType;
         this._range = range;
         this._accuracy = accuracy;
+        this._cooldown = cooldown;
 
     }
 

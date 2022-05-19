@@ -6,6 +6,7 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.ArrayList;
 
 public class App {
@@ -14,12 +15,46 @@ public class App {
     private JComboBox beastPicker;
     private JTable baseStats;
     private JButton startButton;
-    private JButton button2;
+    private JButton hpIncrease;
     private JList JMoveList;
     private JScrollBar scrollBar1;
     private JButton addMoveButton;
-    public static BlueDragon PseudoCodeDragon = new BlueDragon("Tom","Water", "None", "Dragon", 1, 1, 1, 1, 1, 1, 1, 1);
-    public static ArrayList<Move> moveIndex = new ArrayList<Move>();
+    private JLabel Jhp;
+    private JLabel Jspeed;
+    private JLabel Jstrength;
+    private JLabel Jphysical_armour;
+    private JLabel Jmagic_armour;
+    private JLabel Jmagic;
+    private JLabel Jintel;
+    private JLabel Jtype;
+    private JLabel Jtype2;
+    private JLabel JhpMod;
+    private JLabel JspeedMod;
+    private JLabel JstrengthMod;
+    private JLabel Jphysical_armourMod;
+    private JLabel Jmagic_armourMod;
+    private JLabel JmagicMod;
+    private JLabel JintelMod;
+    private JButton speedIncrease;
+    private JButton strengthIncrease;
+    private JButton armourIncrease;
+    private JButton mArmourIncrease;
+    private JButton magicIncrease;
+    private JButton intelIncrease;
+    private JButton hpDecrease;
+    private JButton speedDecrease;
+    private JButton strengthDecrease;
+    private JButton armourDecrease;
+    private JButton mArmourDecrease;
+    private JButton magicDecrease;
+    private JButton intelDecrease;
+
+    public static ArrayList<Stats> beastIndex = new ArrayList<Stats>();
+    public static ArrayList<Stats> beastList = new ArrayList<Stats>();
+    public static ArrayList<Move> globalMoveIndex = new ArrayList<Move>();
+
+
+
     public App() {
 
         JMoveList.addListSelectionListener(new ListSelectionListener() {
@@ -39,26 +74,41 @@ public class App {
 
             }
         });
-       /* beastPicker.addActionListener(new ActionListener() {
+        beastPicker.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
                 if (e.getStateChange() == ItemEvent.SELECTED) {
-                    if (!beastPicker.getSelectedItem()) {
+                    Jhp.setText(String.valueOf(beastIndex.get(beastPicker.getSelectedIndex()).hp()));
+                    Jspeed.setText(String.valueOf(beastIndex.get(beastPicker.getSelectedIndex()).speed()));
+                    Jstrength.setText(String.valueOf(beastIndex.get(beastPicker.getSelectedIndex()).strength()));
+                    Jphysical_armour.setText(String.valueOf(beastIndex.get(beastPicker.getSelectedIndex()).physical_armour()));
+                    Jmagic_armour.setText(String.valueOf(beastIndex.get(beastPicker.getSelectedIndex()).magic_armour()));
+                    Jmagic.setText(String.valueOf(beastIndex.get(beastPicker.getSelectedIndex()).magic()));
+                    Jintel.setText(String.valueOf(beastIndex.get(beastPicker.getSelectedIndex()).intel()));
 
-                    }
+                    Jtype.setText(beastIndex.get(beastPicker.getSelectedIndex()).type1());
+                    Jtype2.setText(beastIndex.get(beastPicker.getSelectedIndex()).type2());
                 }
             }
-        });*/
+        });
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 DefaultListModel DLM = new DefaultListModel();
-                DLM.addElement(PseudoCodeDragon.moveList.get(0).name());
-                DLM.addElement(PseudoCodeDragon.moveList.get(1).name());
-                DLM.addElement(PseudoCodeDragon.moveList.get(2).name());
+                DLM.addElement(beastIndex.get(0).moveList.get(0).name());
+                DLM.addElement(beastIndex.get(0).moveList.get(1).name());
+                DLM.addElement(beastIndex.get(0).moveList.get(2).name());
                 JMoveList.setModel(DLM);
+                //System.out.println(beastPicker.getSelectedIndex());
             }
         });
+        hpIncrease.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
     }
     public static void main(String[] args){
         try {
@@ -76,17 +126,10 @@ public class App {
         frame.pack();
         frame.setVisible(true);
 
+        MoveCreator.create();
+        BeastCreator.create();
 
 
-        var PseudoCodeSlash = new Move("Slash", true, false, 1, 1, "Slashing", "None", 5, 90);
-        var PseudoCodeBite = new Move("Bite", true, false, 1, 1, "Piercing", "None", 5, 90);
-        var PseudoCodeBash = new Move("Bash", true, false, 1, 1, "Bludgeoning", "None", 5, 90);
-
-        PseudoCodeDragon.moveList.add(PseudoCodeSlash);
-        PseudoCodeDragon.moveList.add(PseudoCodeBash);
-        PseudoCodeDragon.moveList.add(PseudoCodeBite);
-
-        moveIndex.add(PseudoCodeSlash);
 
     }
 
@@ -100,4 +143,5 @@ public class App {
         JMoveList.setVisibleRowCount(9);
 
     }
+
 }
