@@ -24,12 +24,18 @@ public class MoveCreator {
 
         //fireBreath special for red dragon
         var fireBreath = new Move("Fire Breath", true, false, -1, 80, "Burning", "None", 100, 70, 2);
+        App.globalMoveIndex.add(fireBreath);
 
         //Ice Breath special for white dragon
         var iceBreath = new Move("Ice Breath", true, false, -1, 90, "Cold", "None", 100, 60, 2);
+        App.globalMoveIndex.add(iceBreath);
 
         //Retribution special for holy type beasts
         var retribution = new Move("Retribution", true, false, -1, 120, "None", "Holy", 100, 65, 3);
+        App.globalMoveIndex.add(retribution);
 
+        //Blood Thirster
+        var bloodThirster = new Move("Blood Thirster", true, false, -1 ,100, "Slashing", "None", 5, 90, 3);
+        App.globalMoveIndex.add(bloodThirster);
     }
 }

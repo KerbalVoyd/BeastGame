@@ -4,12 +4,7 @@ public class BeastCreator {
 
     public static void create() {
 
-        for (int i = 1; i < App.beastIndex.size(); i++) {
 
-            App.beastIndex.get(i).moveList.add(App.globalMoveIndex.get(1));
-            App.beastIndex.get(i).moveList.add(App.globalMoveIndex.get(2));
-            App.beastIndex.get(i).moveList.add(App.globalMoveIndex.get(3));
-        }
 
         App.beastIndex.add(null);
         /**Just some code to remember how to make a new beast**/
@@ -28,6 +23,18 @@ public class BeastCreator {
 
         Albion albion = new Albion("name", "Holy", "Magical", "Albion", 230, 220, 70, 230, 60, 90, 200, 160);
         App.beastIndex.add(albion);
+        albion.moveList.add(App.globalMoveIndex.get(7));
+
+        Elbergast elbergast = new Elbergast("name", "Dark", "Demonic", "Giant", 300, 100, 200, 50, 100, 100, 200, 180);
+        App.beastIndex.add(elbergast);
+        elbergast.moveList.add(App.globalMoveIndex.get(8));
+
+        for (int i = 1; i < App.beastIndex.size(); i++) {
+
+            App.beastIndex.get(i).moveList.add(App.globalMoveIndex.get(1));
+            App.beastIndex.get(i).moveList.add(App.globalMoveIndex.get(2));
+            App.beastIndex.get(i).moveList.add(App.globalMoveIndex.get(3));
+        }
     }
 
 }

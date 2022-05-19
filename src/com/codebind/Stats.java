@@ -16,7 +16,7 @@ public abstract class Stats {
     private String _type2;
     private int _size;
 
-     ArrayList<Move> moveList = new ArrayList<Move>();
+     ArrayList<Move> moveList = new ArrayList<Move>(); //beasts move list starts at 0
 
     public Stats(String name, String type1, String type2, String species, int hp, int speed, int strength, int magic, int magic_armour, int physical_armour, int intel, int size) {
         this._name = name;
@@ -78,6 +78,7 @@ public abstract class Stats {
     - DARK
     - RADIANT
     - NATURE
+    - DEMONIC
 
     ALL PHYSICAL DAMAGE TYPES
     - ACID

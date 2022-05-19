@@ -37,9 +37,7 @@ public abstract class MoveAttributes {
     public int range() {  //important
         return _range;
     }
-    public int accuracy() {  //important
-        return _accuracy;
-    }
+    public int accuracy() { return _accuracy; }
     public int cooldown() {
         return _cooldown;
     }

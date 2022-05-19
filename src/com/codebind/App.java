@@ -52,11 +52,29 @@ public class App {
     public static ArrayList<Stats> beastIndex = new ArrayList<Stats>();
     public static ArrayList<Stats> beastList = new ArrayList<Stats>();
     public static ArrayList<Move> globalMoveIndex = new ArrayList<Move>();
+    public static ArrayList<JButton> JbuttonAddList = new ArrayList<JButton>();
+    public static ArrayList<JButton> JbuttonSubtractList = new ArrayList<JButton>();
 
 
 
     public App() {
+        JbuttonAddList.add(null);
+        JbuttonAddList.add(hpIncrease);
+        JbuttonAddList.add(speedIncrease);
+        JbuttonAddList.add(strengthIncrease);
+        JbuttonAddList.add(armourIncrease);
+        JbuttonAddList.add(mArmourIncrease);
+        JbuttonAddList.add(magicIncrease);
+        JbuttonAddList.add(intelIncrease);
 
+        JbuttonSubtractList.add(null);
+        JbuttonSubtractList.add(hpDecrease);
+        JbuttonSubtractList.add(speedDecrease);
+        JbuttonSubtractList.add(strengthDecrease);
+        JbuttonSubtractList.add(armourDecrease);
+        JbuttonSubtractList.add(mArmourDecrease);
+        JbuttonSubtractList.add(magicDecrease);
+        JbuttonSubtractList.add(intelDecrease);
         JMoveList.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
@@ -88,27 +106,41 @@ public class App {
 
                     Jtype.setText(beastIndex.get(beastPicker.getSelectedIndex()).type1());
                     Jtype2.setText(beastIndex.get(beastPicker.getSelectedIndex()).type2());
+
+                    DefaultListModel DLM = new DefaultListModel();
+                    for (int i = 0; i < beastIndex.get(beastPicker.getSelectedIndex()).moveList.size(); i++) {
+                        DLM.addElement(beastIndex.get(beastPicker.getSelectedIndex()).moveList.get(i).name());
+                    }
+                    for (int i = 0; i < beastIndex.get(beastPicker.getSelectedIndex()).moveList.size(); i++) {
+                        System.out.println(beastIndex.get(beastPicker.getSelectedIndex()).moveList.get(i).name());
+                    }
+                    JMoveList.setModel(DLM);
+
                 }
             }
         });
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                DefaultListModel DLM = new DefaultListModel();
-                DLM.addElement(beastIndex.get(0).moveList.get(0).name());
-                DLM.addElement(beastIndex.get(0).moveList.get(1).name());
-                DLM.addElement(beastIndex.get(0).moveList.get(2).name());
-                JMoveList.setModel(DLM);
-                //System.out.println(beastPicker.getSelectedIndex());
+
             }
         });
+
+        for (int i = 1; i < JbuttonAddList.size(); i++) {
+            JbuttonAddList.get(i).addActionListener()
+        }
         hpIncrease.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
             }
         });
+        speedIncrease.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
+            }
+        });
     }
     public static void main(String[] args){
         try {
