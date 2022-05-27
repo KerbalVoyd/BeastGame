@@ -52,6 +52,8 @@ public class App {
     private JLabel JmodPool;
     private JTextPane textPane1;
     private JList JrealMoveList;
+    private JLabel Jarea;
+    private JLabel Jtime;
 
     public static ArrayList<Stats> beastIndex = new ArrayList<Stats>();
     public static ArrayList<Stats> beastList = new ArrayList<Stats>();
@@ -65,25 +67,6 @@ public class App {
 
     public App() {
 
-
-
-        JMoveList.addListSelectionListener(new ListSelectionListener() {
-            @Override
-            public void valueChanged(ListSelectionEvent e) {
-                //if (moveList.getSelectedIndex() == -1) {
-//
-                //    //make button to add move to arsenal false
-                //}
-            }
-        });
-
-
-        startButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
         beastPicker.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
@@ -350,6 +333,23 @@ public class App {
             }
         });
 
+        startButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int tempModNum = parseInt(Jhp.getText());
+                int tempPoolNum = parseInt(JmodPool.getText());
+                if (tempModNum <= 0) {
+                    JOptionPane.showMessageDialog(null, "You can not start without picking a beast!");
+                }
+                if (tempPoolNum > 0) {
+                    JOptionPane.showMessageDialog(null, "Please allocate all your modifiers");
+                }
+                if (tempModNum > 0 && tempPoolNum == 0) {
+                    Battle.start();
+                }
+
+            }
+        });
     }
     public static void main(String[] args){
         try {
