@@ -3,11 +3,9 @@ package com.codebind;
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
+import java.awt.event.*;
 import java.util.ArrayList;
+import java.util.Set;
 
 import static java.lang.Integer.parseInt;
 
@@ -50,10 +48,49 @@ public class App {
     private JButton magicDecrease;
     private JButton intelDecrease;
     private JLabel JmodPool;
-    private JTextPane textPane1;
-    private JList JrealMoveList;
     private JLabel Jarea;
     private JLabel Jtime;
+    private JButton setTimeWeather;
+    private JTextField beastNameP2;
+    private JComboBox beastPickerP2;
+    private JTable baseStatsP2;
+    private JButton startButtonP2;
+    private JButton hpIncreaseP2;
+    private JList JMoveListP2;
+    private JLabel JhpP2;
+    private JLabel JspeedP2;
+    private JLabel JstrengthP2;
+    private JLabel Jphysical_armourP2;
+    private JLabel Jmagic_armourP2;
+    private JLabel JmagicP2;
+    private JLabel JintelP2;
+    private JLabel JtypeP2;
+    private JLabel Jtype2P2;
+    private JLabel JhpModP2;
+    private JLabel JspeedModP2;
+    private JLabel JstrengthModP2;
+    private JLabel Jphysical_armourModP2;
+    private JLabel Jmagic_armourModP2;
+    private JLabel JmagicModP2;
+    private JLabel JintelModP2;
+    private JButton speedIncreaseP2;
+    private JButton strengthIncreaseP2;
+    private JButton armourIncreaseP2;
+    private JButton mArmourIncreaseP2;
+    private JButton magicIncreaseP2;
+    private JButton intelIncreaseP2;
+    private JButton hpDecreaseP2;
+    private JButton speedDecreaseP2;
+    private JButton strengthDecreaseP2;
+    private JButton armourDecreaseP2;
+    private JButton mArmourDecreaseP2;
+    private JButton magicDecreaseP2;
+    private JButton intelDecreaseP2;
+    private JLabel JmodPoolP2;
+    private JTextArea textArea1;
+    private JTextArea textArea2;
+    private JTextPane textPane1P2;
+    private JButton setTimeWeatherP2;
 
     public static ArrayList<Stats> beastIndex = new ArrayList<Stats>();
     public static ArrayList<Stats> beastList = new ArrayList<Stats>();
@@ -333,21 +370,295 @@ public class App {
             }
         });
 
+        /**THIS IS WHERE PLAYER 2 STUFF STARTS**/
+
+        beastPickerP2.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (e.getStateChange() == ItemEvent.SELECTED) {
+                    JhpP2.setText(String.valueOf(beastIndex.get(beastPickerP2.getSelectedIndex()).hp()));
+                    JspeedP2.setText(String.valueOf(beastIndex.get(beastPickerP2.getSelectedIndex()).speed()));
+                    JstrengthP2.setText(String.valueOf(beastIndex.get(beastPickerP2.getSelectedIndex()).strength()));
+                    Jphysical_armourP2.setText(String.valueOf(beastIndex.get(beastPickerP2.getSelectedIndex()).physical_armour()));
+                    Jmagic_armourP2.setText(String.valueOf(beastIndex.get(beastPickerP2.getSelectedIndex()).magic_armour()));
+                    JmagicP2.setText(String.valueOf(beastIndex.get(beastPickerP2.getSelectedIndex()).magic()));
+                    JintelP2.setText(String.valueOf(beastIndex.get(beastPickerP2.getSelectedIndex()).intel()));
+
+                    JtypeP2.setText(beastIndex.get(beastPickerP2.getSelectedIndex()).type1());
+                    Jtype2P2.setText(beastIndex.get(beastPickerP2.getSelectedIndex()).type2());
+
+                    DefaultListModel DLM = new DefaultListModel();
+                    for (int i = 0; i < beastIndex.get(beastPickerP2.getSelectedIndex()).moveList.size(); i++) {
+                        DLM.addElement(beastIndex.get(beastPickerP2.getSelectedIndex()).moveList.get(i).name());
+                    }
+                    for (int i = 0; i < beastIndex.get(beastPickerP2.getSelectedIndex()).moveList.size(); i++) {
+                        System.out.println(beastIndex.get(beastPickerP2.getSelectedIndex()).moveList.get(i).name());
+                    }
+                    JMoveListP2.setModel(DLM);
+
+                }
+            }
+        });
+
+        hpIncreaseP2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int tempPoolNum = parseInt(JmodPoolP2.getText());
+                if (tempPoolNum >= 5) {
+                    int tempModNum = parseInt(JhpModP2.getText());
+                    tempModNum += 5;
+                    JhpModP2.setText(String.valueOf(tempModNum));
+                    tempPoolNum -= 5;
+                    JmodPoolP2.setText(String.valueOf(tempPoolNum));
+                } else {
+                    JOptionPane.showMessageDialog(null, "You have no more points in your modifier pool!");
+                }
+            }
+        });
+        speedIncreaseP2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int tempPoolNum = parseInt(JmodPoolP2.getText());
+                if (tempPoolNum >= 5) {
+                    int tempModNum = parseInt(JspeedModP2.getText());
+                    tempModNum += 5;
+                    JspeedModP2.setText(String.valueOf(tempModNum));
+                    tempPoolNum -= 5;
+                    JmodPoolP2.setText(String.valueOf(tempPoolNum));
+                } else {
+                    JOptionPane.showMessageDialog(null, "You have no more points in your modifier pool!");
+                }
+            }
+        });
+        strengthIncreaseP2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int tempPoolNum = parseInt(JmodPoolP2.getText());
+                if (tempPoolNum >= 5) {
+                    int tempModNum = parseInt(JstrengthModP2.getText());
+                    tempModNum += 5;
+                    JstrengthModP2.setText(String.valueOf(tempModNum));
+                    tempPoolNum -= 5;
+                    JmodPoolP2.setText(String.valueOf(tempPoolNum));
+                } else {
+                    JOptionPane.showMessageDialog(null, "You have no more points in your modifier pool!");
+                }
+            }
+        });
+        armourIncreaseP2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int tempPoolNum = parseInt(JmodPoolP2.getText());
+                if (tempPoolNum >= 5) {
+                    int tempModNum = parseInt(Jphysical_armourModP2.getText());
+                    tempModNum += 5;
+                    Jphysical_armourModP2.setText(String.valueOf(tempModNum));
+                    tempPoolNum -= 5;
+                    JmodPoolP2.setText(String.valueOf(tempPoolNum));
+                } else {
+                    JOptionPane.showMessageDialog(null, "You have no more points in your modifier pool!");
+                }
+            }
+        });
+        mArmourIncreaseP2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int tempPoolNum = parseInt(JmodPoolP2.getText());
+                if (tempPoolNum >= 5) {
+                    int tempModNum = parseInt(Jmagic_armourModP2.getText());
+                    tempModNum += 5;
+                    Jmagic_armourModP2.setText(String.valueOf(tempModNum));
+                    tempPoolNum -= 5;
+                    JmodPoolP2.setText(String.valueOf(tempPoolNum));
+                } else {
+                    JOptionPane.showMessageDialog(null, "You have no more points in your modifier pool!");
+                }
+            }
+        });
+        magicIncreaseP2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int tempPoolNum = parseInt(JmodPoolP2.getText());
+                if (tempPoolNum >= 5) {
+                    int tempModNum = parseInt(JmagicModP2.getText());
+                    tempModNum += 5;
+                    JmagicModP2.setText(String.valueOf(tempModNum));
+                    tempPoolNum -= 5;
+                    JmodPoolP2.setText(String.valueOf(tempPoolNum));
+                } else {
+                    JOptionPane.showMessageDialog(null, "You have no more points in your modifier pool!");
+                }
+            }
+        });
+        intelIncreaseP2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int tempPoolNum = parseInt(JmodPoolP2.getText());
+                if (tempPoolNum >= 5) {
+                    int tempModNum = parseInt(JintelModP2.getText());
+                    tempModNum += 5;
+                    JintelModP2.setText(String.valueOf(tempModNum));
+                    tempPoolNum -= 5;
+                    JmodPoolP2.setText(String.valueOf(tempPoolNum));
+                } else {
+                    JOptionPane.showMessageDialog(null, "You have no more points in your modifier pool!");
+                }
+            }
+        });
+        hpDecreaseP2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int tempPoolNum = parseInt(JmodPoolP2.getText());
+                int tempModNum = parseInt(JhpModP2.getText());
+                if (tempModNum >= 5) {
+                    tempModNum -= 5;
+                    JhpModP2.setText(String.valueOf(tempModNum));
+                    tempPoolNum += 5;
+                    JmodPoolP2.setText(String.valueOf(tempPoolNum));
+                } else {
+                    JOptionPane.showMessageDialog(null, "You can't lower your modifier!");
+                }
+            }
+        });
+        speedDecreaseP2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int tempPoolNum = parseInt(JmodPoolP2.getText());
+                int tempModNum = parseInt(JspeedModP2.getText());
+                if (tempModNum >= 5) {
+                    tempModNum -= 5;
+                    JspeedModP2.setText(String.valueOf(tempModNum));
+                    tempPoolNum += 5;
+                    JmodPoolP2.setText(String.valueOf(tempPoolNum));
+                } else {
+                    JOptionPane.showMessageDialog(null, "You can't lower your modifier!");
+                }
+            }
+        });
+        strengthDecreaseP2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int tempPoolNum = parseInt(JmodPoolP2.getText());
+                int tempModNum = parseInt(JstrengthModP2.getText());
+                if (tempModNum >= 5) {
+                    tempModNum -= 5;
+                    JstrengthModP2.setText(String.valueOf(tempModNum));
+                    tempPoolNum += 5;
+                    JmodPoolP2.setText(String.valueOf(tempPoolNum));
+                } else {
+                    JOptionPane.showMessageDialog(null, "You can't lower your modifier!");
+                }
+            }
+        });
+        armourDecreaseP2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int tempPoolNum = parseInt(JmodPoolP2.getText());
+                int tempModNum = parseInt(Jphysical_armourModP2.getText());
+                if (tempModNum >= 5) {
+                    tempModNum -= 5;
+                    Jphysical_armourModP2.setText(String.valueOf(tempModNum));
+                    tempPoolNum += 5;
+                    JmodPoolP2.setText(String.valueOf(tempPoolNum));
+                } else {
+                    JOptionPane.showMessageDialog(null, "You can't lower your modifier!");
+                }
+            }
+        });
+        mArmourDecreaseP2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int tempPoolNum = parseInt(JmodPoolP2.getText());
+                int tempModNum = parseInt(Jmagic_armourModP2.getText());
+                if (tempModNum >= 5) {
+                    tempModNum -= 5;
+                    Jmagic_armourModP2.setText(String.valueOf(tempModNum));
+                    tempPoolNum += 5;
+                    JmodPoolP2.setText(String.valueOf(tempPoolNum));
+                } else {
+                    JOptionPane.showMessageDialog(null, "You can't lower your modifier!");
+                }
+            }
+        });
+        magicDecreaseP2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int tempPoolNum = parseInt(JmodPoolP2.getText());
+                int tempModNum = parseInt(JmagicModP2.getText());
+                if (tempModNum >= 5) {
+                    tempModNum -= 5;
+                    JmagicModP2.setText(String.valueOf(tempModNum));
+                    tempPoolNum += 5;
+                    JmodPoolP2.setText(String.valueOf(tempPoolNum));
+                } else {
+                    JOptionPane.showMessageDialog(null, "You can't lower your modifier!");
+                }
+            }
+        });
+        magicDecreaseP2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int tempPoolNum = parseInt(JmodPoolP2.getText());
+                int tempModNum = parseInt(JmagicModP2.getText());
+                if (tempModNum >= 5) {
+                    tempModNum -= 5;
+                    JmagicModP2.setText(String.valueOf(tempModNum));
+                    tempPoolNum += 5;
+                    JmodPoolP2.setText(String.valueOf(tempPoolNum));
+                } else {
+                    JOptionPane.showMessageDialog(null, "You can't lower your modifier!");
+                }
+            }
+        });
+        intelDecreaseP2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int tempPoolNum = parseInt(JmodPoolP2.getText());
+                int tempModNum = parseInt(JintelModP2.getText());
+                if (tempModNum >= 5) {
+                    tempModNum -= 5;
+                    JintelModP2.setText(String.valueOf(tempModNum));
+                    tempPoolNum += 5;
+                    JmodPoolP2.setText(String.valueOf(tempPoolNum));
+                } else {
+                    JOptionPane.showMessageDialog(null, "You can't lower your modifier!");
+                }
+            }
+        });
+
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int tempModNum = parseInt(Jhp.getText());
                 int tempPoolNum = parseInt(JmodPool.getText());
+                int tempModNumP2 = parseInt(JhpP2.getText());
+                int tempPoolNumP2 = parseInt(JmodPoolP2.getText());
+
                 if (tempModNum <= 0) {
                     JOptionPane.showMessageDialog(null, "You can not start without picking a beast!");
                 }
                 if (tempPoolNum > 0) {
                     JOptionPane.showMessageDialog(null, "Please allocate all your modifiers");
                 }
+                if (tempModNum > 0 && tempPoolNum == 0 && ) {
+
+                }
                 if (tempModNum > 0 && tempPoolNum == 0) {
                     Battle.start();
                 }
 
+            }
+        });
+        setTimeWeather.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Setting.change();
+                Jarea.setText(Setting.area);
+                if (Setting.time == 1) {
+                    Jtime.setText("Day");
+                } else {
+                    Jtime.setText("Night");
+                }
             }
         });
     }
@@ -380,10 +691,15 @@ public class App {
         //THIS IS FIRE MAKE SURE TO UTILIZE CUSTOM CODE MORE
 
 
+
         JMoveList = new JList(); //data has type Object[]
         JMoveList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         JMoveList.setLayoutOrientation(JList.HORIZONTAL_WRAP);
         JMoveList.setVisibleRowCount(9);
+        JMoveListP2 = new JList(); //data has type Object[]
+        JMoveListP2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        JMoveListP2.setLayoutOrientation(JList.HORIZONTAL_WRAP);
+        JMoveListP2.setVisibleRowCount(9);
 
     }
 

@@ -11,7 +11,7 @@ public abstract class MoveAttributes {
     private String _elementalType; //magical damage type, Refer to large comment in Class Stats
     private int _range; //if less than 10 feet is melee
     private int _accuracy;
-    private int _cooldown; //make sure peopel can't spam moves
+    private int _cooldown; //make sure people can't spam moves
 
     public String name() {  //important
         return _name;

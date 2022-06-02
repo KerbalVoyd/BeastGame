@@ -16,10 +16,17 @@ public class Setting {
     // 1 = day 2 = night
     public static void change() {
         Random rand = new Random();
+        int tempRand = rand.nextInt(10);
         time = rand.nextInt(2)+1;
-        area = areaList[rand.nextInt(10)];
-        typeAdv = advList[rand.nextInt(10)];
-        typeDisAdv = disAdvList[rand.nextInt(10)];
+        if (tempRand == 0 || tempRand == 5) {
+            time = 2;
+        }
+        if (tempRand == 3) {
+            time = 1;
+        }
+        area = areaList[tempRand];
+        typeAdv = advList[tempRand];
+        typeDisAdv = disAdvList[tempRand];
     }
 
     /*====================================================
