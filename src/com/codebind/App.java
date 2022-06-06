@@ -92,6 +92,10 @@ public class App {
     private JTextPane textPane1P2;
     private JButton setTimeWeatherP2;
 
+    public static int p1;
+    public static int p2;
+
+
     public static ArrayList<Stats> beastIndex = new ArrayList<Stats>();
     public static ArrayList<Stats> beastList = new ArrayList<Stats>();
     public static ArrayList<Move> globalMoveIndex = new ArrayList<Move>();
@@ -108,6 +112,7 @@ public class App {
             @Override
             public void itemStateChanged(ItemEvent e) {
                 if (e.getStateChange() == ItemEvent.SELECTED) {
+                    p1 = beastPicker.getSelectedIndex();
                     Jhp.setText(String.valueOf(beastIndex.get(beastPicker.getSelectedIndex()).hp()));
                     Jspeed.setText(String.valueOf(beastIndex.get(beastPicker.getSelectedIndex()).speed()));
                     Jstrength.setText(String.valueOf(beastIndex.get(beastPicker.getSelectedIndex()).strength()));
@@ -154,6 +159,7 @@ public class App {
                     JhpMod.setText(String.valueOf(tempModNum));
                     tempPoolNum -= 5;
                     JmodPool.setText(String.valueOf(tempPoolNum));
+                    Jhp.setText(String.valueOf(beastIndex.get(p1).hp() + parseInt(JhpMod.getText())));
                 } else {
                     JOptionPane.showMessageDialog(null, "You have no more points in your modifier pool!");
                 }
@@ -169,6 +175,7 @@ public class App {
                     JspeedMod.setText(String.valueOf(tempModNum));
                     tempPoolNum -= 5;
                     JmodPool.setText(String.valueOf(tempPoolNum));
+                    Jspeed.setText(String.valueOf(beastIndex.get(p1).speed() + parseInt(JspeedMod.getText())));
                 } else {
                     JOptionPane.showMessageDialog(null, "You have no more points in your modifier pool!");
                 }
@@ -184,6 +191,7 @@ public class App {
                     JstrengthMod.setText(String.valueOf(tempModNum));
                     tempPoolNum -= 5;
                     JmodPool.setText(String.valueOf(tempPoolNum));
+                    Jstrength.setText(String.valueOf(beastIndex.get(p1).strength() + parseInt(JstrengthMod.getText())));
                 } else {
                     JOptionPane.showMessageDialog(null, "You have no more points in your modifier pool!");
                 }
@@ -199,6 +207,7 @@ public class App {
                     Jphysical_armourMod.setText(String.valueOf(tempModNum));
                     tempPoolNum -= 5;
                     JmodPool.setText(String.valueOf(tempPoolNum));
+                    Jphysical_armour.setText(String.valueOf(beastIndex.get(p1).physical_armour() + parseInt(Jphysical_armourMod.getText())));
                 } else {
                     JOptionPane.showMessageDialog(null, "You have no more points in your modifier pool!");
                 }
@@ -214,6 +223,7 @@ public class App {
                     Jmagic_armourMod.setText(String.valueOf(tempModNum));
                     tempPoolNum -= 5;
                     JmodPool.setText(String.valueOf(tempPoolNum));
+                    Jmagic_armour.setText(String.valueOf(beastIndex.get(p1).magic_armour() + parseInt(Jmagic_armourMod.getText())));
                 } else {
                     JOptionPane.showMessageDialog(null, "You have no more points in your modifier pool!");
                 }
@@ -229,6 +239,7 @@ public class App {
                     JmagicMod.setText(String.valueOf(tempModNum));
                     tempPoolNum -= 5;
                     JmodPool.setText(String.valueOf(tempPoolNum));
+                    Jmagic.setText(String.valueOf(beastIndex.get(p1).magic() + parseInt(JmagicMod.getText())));
                 } else {
                     JOptionPane.showMessageDialog(null, "You have no more points in your modifier pool!");
                 }
@@ -244,6 +255,7 @@ public class App {
                     JintelMod.setText(String.valueOf(tempModNum));
                     tempPoolNum -= 5;
                     JmodPool.setText(String.valueOf(tempPoolNum));
+                    Jintel.setText(String.valueOf(beastIndex.get(p1).intel() + parseInt(JintelMod.getText())));
                 } else {
                     JOptionPane.showMessageDialog(null, "You have no more points in your modifier pool!");
                 }
@@ -259,6 +271,7 @@ public class App {
                     JhpMod.setText(String.valueOf(tempModNum));
                     tempPoolNum += 5;
                     JmodPool.setText(String.valueOf(tempPoolNum));
+                    Jhp.setText(String.valueOf(beastIndex.get(p1).hp() + parseInt(JhpMod.getText())));
                 } else {
                     JOptionPane.showMessageDialog(null, "You can't lower your modifier!");
                 }
@@ -274,6 +287,7 @@ public class App {
                     JspeedMod.setText(String.valueOf(tempModNum));
                     tempPoolNum += 5;
                     JmodPool.setText(String.valueOf(tempPoolNum));
+                    Jspeed.setText(String.valueOf(beastIndex.get(p1).speed() + parseInt(JspeedMod.getText())));
                 } else {
                     JOptionPane.showMessageDialog(null, "You can't lower your modifier!");
                 }
@@ -289,6 +303,7 @@ public class App {
                     JstrengthMod.setText(String.valueOf(tempModNum));
                     tempPoolNum += 5;
                     JmodPool.setText(String.valueOf(tempPoolNum));
+                    Jstrength.setText(String.valueOf(beastIndex.get(p1).strength() + parseInt(JstrengthMod.getText())));
                 } else {
                     JOptionPane.showMessageDialog(null, "You can't lower your modifier!");
                 }
@@ -304,6 +319,7 @@ public class App {
                     Jphysical_armourMod.setText(String.valueOf(tempModNum));
                     tempPoolNum += 5;
                     JmodPool.setText(String.valueOf(tempPoolNum));
+                    Jphysical_armour.setText(String.valueOf(beastIndex.get(p1).physical_armour() + parseInt(Jphysical_armourMod.getText())));
                 } else {
                     JOptionPane.showMessageDialog(null, "You can't lower your modifier!");
                 }
@@ -319,6 +335,7 @@ public class App {
                     Jmagic_armourMod.setText(String.valueOf(tempModNum));
                     tempPoolNum += 5;
                     JmodPool.setText(String.valueOf(tempPoolNum));
+                    Jmagic_armour.setText(String.valueOf(beastIndex.get(p1).magic_armour() + parseInt(Jmagic_armourMod.getText())));
                 } else {
                     JOptionPane.showMessageDialog(null, "You can't lower your modifier!");
                 }
@@ -334,6 +351,7 @@ public class App {
                     JmagicMod.setText(String.valueOf(tempModNum));
                     tempPoolNum += 5;
                     JmodPool.setText(String.valueOf(tempPoolNum));
+                    Jmagic.setText(String.valueOf(beastIndex.get(p1).magic() + parseInt(JmagicMod.getText())));
                 } else {
                     JOptionPane.showMessageDialog(null, "You can't lower your modifier!");
                 }
@@ -364,6 +382,7 @@ public class App {
                     JintelMod.setText(String.valueOf(tempModNum));
                     tempPoolNum += 5;
                     JmodPool.setText(String.valueOf(tempPoolNum));
+                    Jintel.setText(String.valueOf(beastIndex.get(p1).intel() + parseInt(JintelMod.getText())));
                 } else {
                     JOptionPane.showMessageDialog(null, "You can't lower your modifier!");
                 }
@@ -376,6 +395,7 @@ public class App {
             @Override
             public void itemStateChanged(ItemEvent e) {
                 if (e.getStateChange() == ItemEvent.SELECTED) {
+                    p2 = beastPickerP2.getSelectedIndex();
                     JhpP2.setText(String.valueOf(beastIndex.get(beastPickerP2.getSelectedIndex()).hp()));
                     JspeedP2.setText(String.valueOf(beastIndex.get(beastPickerP2.getSelectedIndex()).speed()));
                     JstrengthP2.setText(String.valueOf(beastIndex.get(beastPickerP2.getSelectedIndex()).strength()));
@@ -410,6 +430,7 @@ public class App {
                     JhpModP2.setText(String.valueOf(tempModNum));
                     tempPoolNum -= 5;
                     JmodPoolP2.setText(String.valueOf(tempPoolNum));
+                    JhpP2.setText(String.valueOf(beastIndex.get(p2).hp() + parseInt(JhpModP2.getText())));
                 } else {
                     JOptionPane.showMessageDialog(null, "You have no more points in your modifier pool!");
                 }
@@ -425,6 +446,7 @@ public class App {
                     JspeedModP2.setText(String.valueOf(tempModNum));
                     tempPoolNum -= 5;
                     JmodPoolP2.setText(String.valueOf(tempPoolNum));
+                    JspeedP2.setText(String.valueOf(beastIndex.get(p2).speed() + parseInt(JspeedModP2.getText())));
                 } else {
                     JOptionPane.showMessageDialog(null, "You have no more points in your modifier pool!");
                 }
@@ -440,6 +462,7 @@ public class App {
                     JstrengthModP2.setText(String.valueOf(tempModNum));
                     tempPoolNum -= 5;
                     JmodPoolP2.setText(String.valueOf(tempPoolNum));
+                    JstrengthP2.setText(String.valueOf(beastIndex.get(p2).strength() + parseInt(JstrengthModP2.getText())));
                 } else {
                     JOptionPane.showMessageDialog(null, "You have no more points in your modifier pool!");
                 }
@@ -455,6 +478,7 @@ public class App {
                     Jphysical_armourModP2.setText(String.valueOf(tempModNum));
                     tempPoolNum -= 5;
                     JmodPoolP2.setText(String.valueOf(tempPoolNum));
+                    Jphysical_armourP2.setText(String.valueOf(beastIndex.get(p2).physical_armour() + parseInt(Jphysical_armourModP2.getText())));
                 } else {
                     JOptionPane.showMessageDialog(null, "You have no more points in your modifier pool!");
                 }
@@ -470,6 +494,7 @@ public class App {
                     Jmagic_armourModP2.setText(String.valueOf(tempModNum));
                     tempPoolNum -= 5;
                     JmodPoolP2.setText(String.valueOf(tempPoolNum));
+                    Jmagic_armourP2.setText(String.valueOf(beastIndex.get(p2).magic_armour() + parseInt(Jmagic_armourModP2.getText())));
                 } else {
                     JOptionPane.showMessageDialog(null, "You have no more points in your modifier pool!");
                 }
@@ -485,6 +510,7 @@ public class App {
                     JmagicModP2.setText(String.valueOf(tempModNum));
                     tempPoolNum -= 5;
                     JmodPoolP2.setText(String.valueOf(tempPoolNum));
+                    JmagicP2.setText(String.valueOf(beastIndex.get(p2).magic() + parseInt(JmagicModP2.getText())));
                 } else {
                     JOptionPane.showMessageDialog(null, "You have no more points in your modifier pool!");
                 }
@@ -500,6 +526,7 @@ public class App {
                     JintelModP2.setText(String.valueOf(tempModNum));
                     tempPoolNum -= 5;
                     JmodPoolP2.setText(String.valueOf(tempPoolNum));
+                    JintelP2.setText(String.valueOf(beastIndex.get(p2).intel() + parseInt(JintelModP2.getText())));
                 } else {
                     JOptionPane.showMessageDialog(null, "You have no more points in your modifier pool!");
                 }
@@ -515,6 +542,7 @@ public class App {
                     JhpModP2.setText(String.valueOf(tempModNum));
                     tempPoolNum += 5;
                     JmodPoolP2.setText(String.valueOf(tempPoolNum));
+                    JhpP2.setText(String.valueOf(beastIndex.get(p2).hp() + parseInt(JhpModP2.getText())));
                 } else {
                     JOptionPane.showMessageDialog(null, "You can't lower your modifier!");
                 }
@@ -530,6 +558,7 @@ public class App {
                     JspeedModP2.setText(String.valueOf(tempModNum));
                     tempPoolNum += 5;
                     JmodPoolP2.setText(String.valueOf(tempPoolNum));
+                    JspeedP2.setText(String.valueOf(beastIndex.get(p2).speed() + parseInt(JspeedModP2.getText())));
                 } else {
                     JOptionPane.showMessageDialog(null, "You can't lower your modifier!");
                 }
@@ -545,6 +574,7 @@ public class App {
                     JstrengthModP2.setText(String.valueOf(tempModNum));
                     tempPoolNum += 5;
                     JmodPoolP2.setText(String.valueOf(tempPoolNum));
+                    JstrengthP2.setText(String.valueOf(beastIndex.get(p2).strength() + parseInt(JstrengthModP2.getText())));
                 } else {
                     JOptionPane.showMessageDialog(null, "You can't lower your modifier!");
                 }
@@ -560,6 +590,7 @@ public class App {
                     Jphysical_armourModP2.setText(String.valueOf(tempModNum));
                     tempPoolNum += 5;
                     JmodPoolP2.setText(String.valueOf(tempPoolNum));
+                    Jphysical_armourP2.setText(String.valueOf(beastIndex.get(p2).physical_armour() + parseInt(Jphysical_armourModP2.getText())));
                 } else {
                     JOptionPane.showMessageDialog(null, "You can't lower your modifier!");
                 }
@@ -575,6 +606,7 @@ public class App {
                     Jmagic_armourModP2.setText(String.valueOf(tempModNum));
                     tempPoolNum += 5;
                     JmodPoolP2.setText(String.valueOf(tempPoolNum));
+                    Jmagic_armourP2.setText(String.valueOf(beastIndex.get(p2).magic_armour() + parseInt(Jmagic_armourModP2.getText())));
                 } else {
                     JOptionPane.showMessageDialog(null, "You can't lower your modifier!");
                 }
@@ -590,21 +622,7 @@ public class App {
                     JmagicModP2.setText(String.valueOf(tempModNum));
                     tempPoolNum += 5;
                     JmodPoolP2.setText(String.valueOf(tempPoolNum));
-                } else {
-                    JOptionPane.showMessageDialog(null, "You can't lower your modifier!");
-                }
-            }
-        });
-        magicDecreaseP2.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int tempPoolNum = parseInt(JmodPoolP2.getText());
-                int tempModNum = parseInt(JmagicModP2.getText());
-                if (tempModNum >= 5) {
-                    tempModNum -= 5;
-                    JmagicModP2.setText(String.valueOf(tempModNum));
-                    tempPoolNum += 5;
-                    JmodPoolP2.setText(String.valueOf(tempPoolNum));
+                    JmagicP2.setText(String.valueOf(beastIndex.get(p2).magic() + parseInt(JmagicModP2.getText())));
                 } else {
                     JOptionPane.showMessageDialog(null, "You can't lower your modifier!");
                 }
@@ -620,6 +638,7 @@ public class App {
                     JintelModP2.setText(String.valueOf(tempModNum));
                     tempPoolNum += 5;
                     JmodPoolP2.setText(String.valueOf(tempPoolNum));
+                    JintelP2.setText(String.valueOf(beastIndex.get(p2).intel() + parseInt(JintelModP2.getText())));
                 } else {
                     JOptionPane.showMessageDialog(null, "You can't lower your modifier!");
                 }
@@ -640,8 +659,8 @@ public class App {
                 if (tempPoolNum > 0) {
                     JOptionPane.showMessageDialog(null, "Please allocate all your modifiers");
                 }
-                if (tempModNum > 0 && tempPoolNum == 0 && ) {
-
+                if (tempModNum > 0 && tempPoolNum == 0 && tempModNumP2 == 0 && tempPoolNumP2 > 0) {
+                    Battle.start();
                 }
                 if (tempModNum > 0 && tempPoolNum == 0) {
                     Battle.start();
@@ -681,7 +700,6 @@ public class App {
 
         MoveCreator.create();
         BeastCreator.create();
-
 
 
     }
