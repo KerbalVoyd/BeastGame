@@ -99,10 +99,7 @@ public class App {
     public static ArrayList<Stats> beastIndex = new ArrayList<Stats>();
     public static ArrayList<Stats> beastList = new ArrayList<Stats>();
     public static ArrayList<Move> globalMoveIndex = new ArrayList<Move>();
-    public static ArrayList<JButton> JbuttonAddList = new ArrayList<JButton>();
-    public static ArrayList<JButton> JbuttonSubtractList = new ArrayList<JButton>();
-
-    public static ArrayList<JLabel> JlabelMod = new ArrayList<JLabel>();
+    public static ArrayList<Integer> playerStats = new ArrayList<Integer>();
 
 
 
@@ -113,13 +110,20 @@ public class App {
             public void itemStateChanged(ItemEvent e) {
                 if (e.getStateChange() == ItemEvent.SELECTED) {
                     p1 = beastPicker.getSelectedIndex();
-                    Jhp.setText(String.valueOf(beastIndex.get(beastPicker.getSelectedIndex()).hp()));
-                    Jspeed.setText(String.valueOf(beastIndex.get(beastPicker.getSelectedIndex()).speed()));
-                    Jstrength.setText(String.valueOf(beastIndex.get(beastPicker.getSelectedIndex()).strength()));
-                    Jphysical_armour.setText(String.valueOf(beastIndex.get(beastPicker.getSelectedIndex()).physical_armour()));
-                    Jmagic_armour.setText(String.valueOf(beastIndex.get(beastPicker.getSelectedIndex()).magic_armour()));
-                    Jmagic.setText(String.valueOf(beastIndex.get(beastPicker.getSelectedIndex()).magic()));
-                    Jintel.setText(String.valueOf(beastIndex.get(beastPicker.getSelectedIndex()).intel()));
+                    Jhp.setText(String.valueOf(beastIndex.get(beastPicker.getSelectedIndex()).hp()+parseInt(JhpMod.getText())));
+                    playerStats.add(parseInt(Jhp.getText()));
+                    Jspeed.setText(String.valueOf(beastIndex.get(beastPicker.getSelectedIndex()).speed()+parseInt(JspeedMod.getText())));
+                    playerStats.add(parseInt(Jspeed.getText()));
+                    Jstrength.setText(String.valueOf(beastIndex.get(beastPicker.getSelectedIndex()).strength()+parseInt(JstrengthMod.getText())));
+                    playerStats.add(parseInt(Jstrength.getText()));
+                    Jphysical_armour.setText(String.valueOf(beastIndex.get(beastPicker.getSelectedIndex()).physical_armour()+parseInt(Jphysical_armourMod.getText())));
+                    playerStats.add(parseInt(Jphysical_armour.getText()));
+                    Jmagic_armour.setText(String.valueOf(beastIndex.get(beastPicker.getSelectedIndex()).magic_armour()+parseInt(Jmagic_armourMod.getText())));
+                    playerStats.add(parseInt(Jmagic_armour.getText()));
+                    Jmagic.setText(String.valueOf(beastIndex.get(beastPicker.getSelectedIndex()).magic()+parseInt(JmagicMod.getText())));
+                    playerStats.add(parseInt(Jmagic.getText()));
+                    Jintel.setText(String.valueOf(beastIndex.get(beastPicker.getSelectedIndex()).intel()+parseInt(JintelMod.getText())));
+                    playerStats.add(parseInt(Jintel.getText()));
 
                     Jtype.setText(beastIndex.get(beastPicker.getSelectedIndex()).type1());
                     Jtype2.setText(beastIndex.get(beastPicker.getSelectedIndex()).type2());
@@ -153,11 +157,11 @@ public class App {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int tempPoolNum = parseInt(JmodPool.getText());
-                if (tempPoolNum >= 5) {
+                if (tempPoolNum >= 10) {
                     int tempModNum = parseInt(JhpMod.getText());
-                    tempModNum += 5;
+                    tempModNum += 10;
                     JhpMod.setText(String.valueOf(tempModNum));
-                    tempPoolNum -= 5;
+                    tempPoolNum -= 10;
                     JmodPool.setText(String.valueOf(tempPoolNum));
                     Jhp.setText(String.valueOf(beastIndex.get(p1).hp() + parseInt(JhpMod.getText())));
                 } else {
@@ -169,11 +173,11 @@ public class App {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int tempPoolNum = parseInt(JmodPool.getText());
-                if (tempPoolNum >= 5) {
+                if (tempPoolNum >= 10) {
                     int tempModNum = parseInt(JspeedMod.getText());
-                    tempModNum += 5;
+                    tempModNum += 10;
                     JspeedMod.setText(String.valueOf(tempModNum));
-                    tempPoolNum -= 5;
+                    tempPoolNum -= 10;
                     JmodPool.setText(String.valueOf(tempPoolNum));
                     Jspeed.setText(String.valueOf(beastIndex.get(p1).speed() + parseInt(JspeedMod.getText())));
                 } else {
@@ -185,11 +189,11 @@ public class App {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int tempPoolNum = parseInt(JmodPool.getText());
-                if (tempPoolNum >= 5) {
+                if (tempPoolNum >= 10) {
                     int tempModNum = parseInt(JstrengthMod.getText());
-                    tempModNum += 5;
+                    tempModNum += 10;
                     JstrengthMod.setText(String.valueOf(tempModNum));
-                    tempPoolNum -= 5;
+                    tempPoolNum -= 10;
                     JmodPool.setText(String.valueOf(tempPoolNum));
                     Jstrength.setText(String.valueOf(beastIndex.get(p1).strength() + parseInt(JstrengthMod.getText())));
                 } else {
@@ -201,11 +205,11 @@ public class App {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int tempPoolNum = parseInt(JmodPool.getText());
-                if (tempPoolNum >= 5) {
+                if (tempPoolNum >= 10) {
                     int tempModNum = parseInt(Jphysical_armourMod.getText());
-                    tempModNum += 5;
+                    tempModNum += 10;
                     Jphysical_armourMod.setText(String.valueOf(tempModNum));
-                    tempPoolNum -= 5;
+                    tempPoolNum -= 10;
                     JmodPool.setText(String.valueOf(tempPoolNum));
                     Jphysical_armour.setText(String.valueOf(beastIndex.get(p1).physical_armour() + parseInt(Jphysical_armourMod.getText())));
                 } else {
@@ -217,11 +221,11 @@ public class App {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int tempPoolNum = parseInt(JmodPool.getText());
-                if (tempPoolNum >= 5) {
+                if (tempPoolNum >= 10) {
                     int tempModNum = parseInt(Jmagic_armourMod.getText());
-                    tempModNum += 5;
+                    tempModNum += 10;
                     Jmagic_armourMod.setText(String.valueOf(tempModNum));
-                    tempPoolNum -= 5;
+                    tempPoolNum -= 10;
                     JmodPool.setText(String.valueOf(tempPoolNum));
                     Jmagic_armour.setText(String.valueOf(beastIndex.get(p1).magic_armour() + parseInt(Jmagic_armourMod.getText())));
                 } else {
@@ -233,11 +237,11 @@ public class App {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int tempPoolNum = parseInt(JmodPool.getText());
-                if (tempPoolNum >= 5) {
+                if (tempPoolNum >= 10) {
                     int tempModNum = parseInt(JmagicMod.getText());
-                    tempModNum += 5;
+                    tempModNum += 10;
                     JmagicMod.setText(String.valueOf(tempModNum));
-                    tempPoolNum -= 5;
+                    tempPoolNum -= 10;
                     JmodPool.setText(String.valueOf(tempPoolNum));
                     Jmagic.setText(String.valueOf(beastIndex.get(p1).magic() + parseInt(JmagicMod.getText())));
                 } else {
@@ -249,11 +253,11 @@ public class App {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int tempPoolNum = parseInt(JmodPool.getText());
-                if (tempPoolNum >= 5) {
+                if (tempPoolNum >= 10) {
                     int tempModNum = parseInt(JintelMod.getText());
-                    tempModNum += 5;
+                    tempModNum += 10;
                     JintelMod.setText(String.valueOf(tempModNum));
-                    tempPoolNum -= 5;
+                    tempPoolNum -= 10;
                     JmodPool.setText(String.valueOf(tempPoolNum));
                     Jintel.setText(String.valueOf(beastIndex.get(p1).intel() + parseInt(JintelMod.getText())));
                 } else {
@@ -266,10 +270,10 @@ public class App {
             public void actionPerformed(ActionEvent e) {
                 int tempPoolNum = parseInt(JmodPool.getText());
                 int tempModNum = parseInt(JhpMod.getText());
-                if (tempModNum >= 5) {
-                    tempModNum -= 5;
+                if (tempModNum >= 10) {
+                    tempModNum -= 10;
                     JhpMod.setText(String.valueOf(tempModNum));
-                    tempPoolNum += 5;
+                    tempPoolNum += 10;
                     JmodPool.setText(String.valueOf(tempPoolNum));
                     Jhp.setText(String.valueOf(beastIndex.get(p1).hp() + parseInt(JhpMod.getText())));
                 } else {
@@ -282,10 +286,10 @@ public class App {
             public void actionPerformed(ActionEvent e) {
                 int tempPoolNum = parseInt(JmodPool.getText());
                 int tempModNum = parseInt(JspeedMod.getText());
-                if (tempModNum >= 5) {
-                    tempModNum -= 5;
+                if (tempModNum >= 10) {
+                    tempModNum -= 10;
                     JspeedMod.setText(String.valueOf(tempModNum));
-                    tempPoolNum += 5;
+                    tempPoolNum += 10;
                     JmodPool.setText(String.valueOf(tempPoolNum));
                     Jspeed.setText(String.valueOf(beastIndex.get(p1).speed() + parseInt(JspeedMod.getText())));
                 } else {
@@ -298,10 +302,10 @@ public class App {
             public void actionPerformed(ActionEvent e) {
                 int tempPoolNum = parseInt(JmodPool.getText());
                 int tempModNum = parseInt(JstrengthMod.getText());
-                if (tempModNum >= 5) {
-                    tempModNum -= 5;
+                if (tempModNum >= 10) {
+                    tempModNum -= 10;
                     JstrengthMod.setText(String.valueOf(tempModNum));
-                    tempPoolNum += 5;
+                    tempPoolNum += 10;
                     JmodPool.setText(String.valueOf(tempPoolNum));
                     Jstrength.setText(String.valueOf(beastIndex.get(p1).strength() + parseInt(JstrengthMod.getText())));
                 } else {
@@ -314,10 +318,10 @@ public class App {
             public void actionPerformed(ActionEvent e) {
                 int tempPoolNum = parseInt(JmodPool.getText());
                 int tempModNum = parseInt(Jphysical_armourMod.getText());
-                if (tempModNum >= 5) {
-                    tempModNum -= 5;
+                if (tempModNum >= 10) {
+                    tempModNum -= 10;
                     Jphysical_armourMod.setText(String.valueOf(tempModNum));
-                    tempPoolNum += 5;
+                    tempPoolNum += 10;
                     JmodPool.setText(String.valueOf(tempPoolNum));
                     Jphysical_armour.setText(String.valueOf(beastIndex.get(p1).physical_armour() + parseInt(Jphysical_armourMod.getText())));
                 } else {
@@ -330,10 +334,10 @@ public class App {
             public void actionPerformed(ActionEvent e) {
                 int tempPoolNum = parseInt(JmodPool.getText());
                 int tempModNum = parseInt(Jmagic_armourMod.getText());
-                if (tempModNum >= 5) {
-                    tempModNum -= 5;
+                if (tempModNum >= 10) {
+                    tempModNum -= 10;
                     Jmagic_armourMod.setText(String.valueOf(tempModNum));
-                    tempPoolNum += 5;
+                    tempPoolNum += 10;
                     JmodPool.setText(String.valueOf(tempPoolNum));
                     Jmagic_armour.setText(String.valueOf(beastIndex.get(p1).magic_armour() + parseInt(Jmagic_armourMod.getText())));
                 } else {
@@ -346,10 +350,10 @@ public class App {
             public void actionPerformed(ActionEvent e) {
                 int tempPoolNum = parseInt(JmodPool.getText());
                 int tempModNum = parseInt(JmagicMod.getText());
-                if (tempModNum >= 5) {
-                    tempModNum -= 5;
+                if (tempModNum >= 10) {
+                    tempModNum -= 10;
                     JmagicMod.setText(String.valueOf(tempModNum));
-                    tempPoolNum += 5;
+                    tempPoolNum += 10;
                     JmodPool.setText(String.valueOf(tempPoolNum));
                     Jmagic.setText(String.valueOf(beastIndex.get(p1).magic() + parseInt(JmagicMod.getText())));
                 } else {
@@ -362,10 +366,10 @@ public class App {
             public void actionPerformed(ActionEvent e) {
                 int tempPoolNum = parseInt(JmodPool.getText());
                 int tempModNum = parseInt(JmagicMod.getText());
-                if (tempModNum >= 5) {
-                    tempModNum -= 5;
+                if (tempModNum >= 10) {
+                    tempModNum -= 10;
                     JmagicMod.setText(String.valueOf(tempModNum));
-                    tempPoolNum += 5;
+                    tempPoolNum += 10;
                     JmodPool.setText(String.valueOf(tempPoolNum));
                 } else {
                     JOptionPane.showMessageDialog(null, "You can't lower your modifier!");
@@ -377,10 +381,10 @@ public class App {
             public void actionPerformed(ActionEvent e) {
                 int tempPoolNum = parseInt(JmodPool.getText());
                 int tempModNum = parseInt(JintelMod.getText());
-                if (tempModNum >= 5) {
-                    tempModNum -= 5;
+                if (tempModNum >= 10) {
+                    tempModNum -= 10;
                     JintelMod.setText(String.valueOf(tempModNum));
-                    tempPoolNum += 5;
+                    tempPoolNum += 10;
                     JmodPool.setText(String.valueOf(tempPoolNum));
                     Jintel.setText(String.valueOf(beastIndex.get(p1).intel() + parseInt(JintelMod.getText())));
                 } else {
@@ -396,13 +400,20 @@ public class App {
             public void itemStateChanged(ItemEvent e) {
                 if (e.getStateChange() == ItemEvent.SELECTED) {
                     p2 = beastPickerP2.getSelectedIndex();
-                    JhpP2.setText(String.valueOf(beastIndex.get(beastPickerP2.getSelectedIndex()).hp()));
-                    JspeedP2.setText(String.valueOf(beastIndex.get(beastPickerP2.getSelectedIndex()).speed()));
-                    JstrengthP2.setText(String.valueOf(beastIndex.get(beastPickerP2.getSelectedIndex()).strength()));
-                    Jphysical_armourP2.setText(String.valueOf(beastIndex.get(beastPickerP2.getSelectedIndex()).physical_armour()));
-                    Jmagic_armourP2.setText(String.valueOf(beastIndex.get(beastPickerP2.getSelectedIndex()).magic_armour()));
-                    JmagicP2.setText(String.valueOf(beastIndex.get(beastPickerP2.getSelectedIndex()).magic()));
-                    JintelP2.setText(String.valueOf(beastIndex.get(beastPickerP2.getSelectedIndex()).intel()));
+                    JhpP2.setText(String.valueOf(beastIndex.get(beastPickerP2.getSelectedIndex()).hp()+parseInt(JhpModP2.getText())));
+                    playerStats.add(parseInt(JhpP2.getText()));
+                    JspeedP2.setText(String.valueOf(beastIndex.get(beastPickerP2.getSelectedIndex()).speed()+parseInt(JspeedModP2.getText())));
+                    playerStats.add(parseInt(JspeedP2.getText()));
+                    JstrengthP2.setText(String.valueOf(beastIndex.get(beastPickerP2.getSelectedIndex()).strength()+parseInt(JstrengthP2.getText())));
+                    playerStats.add(parseInt(JstrengthP2.getText()));
+                    Jphysical_armourP2.setText(String.valueOf(beastIndex.get(beastPickerP2.getSelectedIndex()).physical_armour()+parseInt(Jphysical_armourP2.getText())));
+                    playerStats.add(parseInt(Jphysical_armourP2.getText()));
+                    Jmagic_armourP2.setText(String.valueOf(beastIndex.get(beastPickerP2.getSelectedIndex()).magic_armour()+parseInt(Jmagic_armourModP2.getText())));
+                    playerStats.add(parseInt(Jmagic_armour.getText()));
+                    JmagicP2.setText(String.valueOf(beastIndex.get(beastPickerP2.getSelectedIndex()).magic()+parseInt(JmagicModP2.getText())));
+                    playerStats.add(parseInt(JmagicP2.getText()));
+                    JintelP2.setText(String.valueOf(beastIndex.get(beastPickerP2.getSelectedIndex()).intel()+parseInt(JintelP2.getText())));
+                    playerStats.add(parseInt(JintelP2.getText()));
 
                     JtypeP2.setText(beastIndex.get(beastPickerP2.getSelectedIndex()).type1());
                     Jtype2P2.setText(beastIndex.get(beastPickerP2.getSelectedIndex()).type2());
@@ -424,11 +435,11 @@ public class App {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int tempPoolNum = parseInt(JmodPoolP2.getText());
-                if (tempPoolNum >= 5) {
+                if (tempPoolNum >= 10) {
                     int tempModNum = parseInt(JhpModP2.getText());
-                    tempModNum += 5;
+                    tempModNum += 10;
                     JhpModP2.setText(String.valueOf(tempModNum));
-                    tempPoolNum -= 5;
+                    tempPoolNum -= 10;
                     JmodPoolP2.setText(String.valueOf(tempPoolNum));
                     JhpP2.setText(String.valueOf(beastIndex.get(p2).hp() + parseInt(JhpModP2.getText())));
                 } else {
@@ -440,11 +451,11 @@ public class App {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int tempPoolNum = parseInt(JmodPoolP2.getText());
-                if (tempPoolNum >= 5) {
+                if (tempPoolNum >= 10) {
                     int tempModNum = parseInt(JspeedModP2.getText());
-                    tempModNum += 5;
+                    tempModNum += 10;
                     JspeedModP2.setText(String.valueOf(tempModNum));
-                    tempPoolNum -= 5;
+                    tempPoolNum -= 10;
                     JmodPoolP2.setText(String.valueOf(tempPoolNum));
                     JspeedP2.setText(String.valueOf(beastIndex.get(p2).speed() + parseInt(JspeedModP2.getText())));
                 } else {
@@ -456,11 +467,11 @@ public class App {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int tempPoolNum = parseInt(JmodPoolP2.getText());
-                if (tempPoolNum >= 5) {
+                if (tempPoolNum >= 10) {
                     int tempModNum = parseInt(JstrengthModP2.getText());
-                    tempModNum += 5;
+                    tempModNum += 10;
                     JstrengthModP2.setText(String.valueOf(tempModNum));
-                    tempPoolNum -= 5;
+                    tempPoolNum -= 10;
                     JmodPoolP2.setText(String.valueOf(tempPoolNum));
                     JstrengthP2.setText(String.valueOf(beastIndex.get(p2).strength() + parseInt(JstrengthModP2.getText())));
                 } else {
@@ -472,11 +483,11 @@ public class App {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int tempPoolNum = parseInt(JmodPoolP2.getText());
-                if (tempPoolNum >= 5) {
+                if (tempPoolNum >= 10) {
                     int tempModNum = parseInt(Jphysical_armourModP2.getText());
-                    tempModNum += 5;
+                    tempModNum += 10;
                     Jphysical_armourModP2.setText(String.valueOf(tempModNum));
-                    tempPoolNum -= 5;
+                    tempPoolNum -= 10;
                     JmodPoolP2.setText(String.valueOf(tempPoolNum));
                     Jphysical_armourP2.setText(String.valueOf(beastIndex.get(p2).physical_armour() + parseInt(Jphysical_armourModP2.getText())));
                 } else {
@@ -488,11 +499,11 @@ public class App {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int tempPoolNum = parseInt(JmodPoolP2.getText());
-                if (tempPoolNum >= 5) {
+                if (tempPoolNum >= 10) {
                     int tempModNum = parseInt(Jmagic_armourModP2.getText());
-                    tempModNum += 5;
+                    tempModNum += 10;
                     Jmagic_armourModP2.setText(String.valueOf(tempModNum));
-                    tempPoolNum -= 5;
+                    tempPoolNum -= 10;
                     JmodPoolP2.setText(String.valueOf(tempPoolNum));
                     Jmagic_armourP2.setText(String.valueOf(beastIndex.get(p2).magic_armour() + parseInt(Jmagic_armourModP2.getText())));
                 } else {
@@ -504,11 +515,11 @@ public class App {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int tempPoolNum = parseInt(JmodPoolP2.getText());
-                if (tempPoolNum >= 5) {
+                if (tempPoolNum >= 10) {
                     int tempModNum = parseInt(JmagicModP2.getText());
-                    tempModNum += 5;
+                    tempModNum += 10;
                     JmagicModP2.setText(String.valueOf(tempModNum));
-                    tempPoolNum -= 5;
+                    tempPoolNum -= 10;
                     JmodPoolP2.setText(String.valueOf(tempPoolNum));
                     JmagicP2.setText(String.valueOf(beastIndex.get(p2).magic() + parseInt(JmagicModP2.getText())));
                 } else {
@@ -520,11 +531,11 @@ public class App {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int tempPoolNum = parseInt(JmodPoolP2.getText());
-                if (tempPoolNum >= 5) {
+                if (tempPoolNum >= 10) {
                     int tempModNum = parseInt(JintelModP2.getText());
-                    tempModNum += 5;
+                    tempModNum += 10;
                     JintelModP2.setText(String.valueOf(tempModNum));
-                    tempPoolNum -= 5;
+                    tempPoolNum -= 10;
                     JmodPoolP2.setText(String.valueOf(tempPoolNum));
                     JintelP2.setText(String.valueOf(beastIndex.get(p2).intel() + parseInt(JintelModP2.getText())));
                 } else {
@@ -537,10 +548,10 @@ public class App {
             public void actionPerformed(ActionEvent e) {
                 int tempPoolNum = parseInt(JmodPoolP2.getText());
                 int tempModNum = parseInt(JhpModP2.getText());
-                if (tempModNum >= 5) {
-                    tempModNum -= 5;
+                if (tempModNum >= 10) {
+                    tempModNum -= 10;
                     JhpModP2.setText(String.valueOf(tempModNum));
-                    tempPoolNum += 5;
+                    tempPoolNum += 10;
                     JmodPoolP2.setText(String.valueOf(tempPoolNum));
                     JhpP2.setText(String.valueOf(beastIndex.get(p2).hp() + parseInt(JhpModP2.getText())));
                 } else {
@@ -553,10 +564,10 @@ public class App {
             public void actionPerformed(ActionEvent e) {
                 int tempPoolNum = parseInt(JmodPoolP2.getText());
                 int tempModNum = parseInt(JspeedModP2.getText());
-                if (tempModNum >= 5) {
-                    tempModNum -= 5;
+                if (tempModNum >= 10) {
+                    tempModNum -= 10;
                     JspeedModP2.setText(String.valueOf(tempModNum));
-                    tempPoolNum += 5;
+                    tempPoolNum += 10;
                     JmodPoolP2.setText(String.valueOf(tempPoolNum));
                     JspeedP2.setText(String.valueOf(beastIndex.get(p2).speed() + parseInt(JspeedModP2.getText())));
                 } else {
@@ -569,10 +580,10 @@ public class App {
             public void actionPerformed(ActionEvent e) {
                 int tempPoolNum = parseInt(JmodPoolP2.getText());
                 int tempModNum = parseInt(JstrengthModP2.getText());
-                if (tempModNum >= 5) {
-                    tempModNum -= 5;
+                if (tempModNum >= 10) {
+                    tempModNum -= 10;
                     JstrengthModP2.setText(String.valueOf(tempModNum));
-                    tempPoolNum += 5;
+                    tempPoolNum += 10;
                     JmodPoolP2.setText(String.valueOf(tempPoolNum));
                     JstrengthP2.setText(String.valueOf(beastIndex.get(p2).strength() + parseInt(JstrengthModP2.getText())));
                 } else {
@@ -585,10 +596,10 @@ public class App {
             public void actionPerformed(ActionEvent e) {
                 int tempPoolNum = parseInt(JmodPoolP2.getText());
                 int tempModNum = parseInt(Jphysical_armourModP2.getText());
-                if (tempModNum >= 5) {
-                    tempModNum -= 5;
+                if (tempModNum >= 10) {
+                    tempModNum -= 10;
                     Jphysical_armourModP2.setText(String.valueOf(tempModNum));
-                    tempPoolNum += 5;
+                    tempPoolNum += 10;
                     JmodPoolP2.setText(String.valueOf(tempPoolNum));
                     Jphysical_armourP2.setText(String.valueOf(beastIndex.get(p2).physical_armour() + parseInt(Jphysical_armourModP2.getText())));
                 } else {
@@ -601,10 +612,10 @@ public class App {
             public void actionPerformed(ActionEvent e) {
                 int tempPoolNum = parseInt(JmodPoolP2.getText());
                 int tempModNum = parseInt(Jmagic_armourModP2.getText());
-                if (tempModNum >= 5) {
-                    tempModNum -= 5;
+                if (tempModNum >= 10) {
+                    tempModNum -= 10;
                     Jmagic_armourModP2.setText(String.valueOf(tempModNum));
-                    tempPoolNum += 5;
+                    tempPoolNum += 10;
                     JmodPoolP2.setText(String.valueOf(tempPoolNum));
                     Jmagic_armourP2.setText(String.valueOf(beastIndex.get(p2).magic_armour() + parseInt(Jmagic_armourModP2.getText())));
                 } else {
@@ -617,10 +628,10 @@ public class App {
             public void actionPerformed(ActionEvent e) {
                 int tempPoolNum = parseInt(JmodPoolP2.getText());
                 int tempModNum = parseInt(JmagicModP2.getText());
-                if (tempModNum >= 5) {
-                    tempModNum -= 5;
+                if (tempModNum >= 10) {
+                    tempModNum -= 10;
                     JmagicModP2.setText(String.valueOf(tempModNum));
-                    tempPoolNum += 5;
+                    tempPoolNum += 10;
                     JmodPoolP2.setText(String.valueOf(tempPoolNum));
                     JmagicP2.setText(String.valueOf(beastIndex.get(p2).magic() + parseInt(JmagicModP2.getText())));
                 } else {
@@ -633,10 +644,10 @@ public class App {
             public void actionPerformed(ActionEvent e) {
                 int tempPoolNum = parseInt(JmodPoolP2.getText());
                 int tempModNum = parseInt(JintelModP2.getText());
-                if (tempModNum >= 5) {
-                    tempModNum -= 5;
+                if (tempModNum >= 10) {
+                    tempModNum -= 10;
                     JintelModP2.setText(String.valueOf(tempModNum));
-                    tempPoolNum += 5;
+                    tempPoolNum += 10;
                     JmodPoolP2.setText(String.valueOf(tempPoolNum));
                     JintelP2.setText(String.valueOf(beastIndex.get(p2).intel() + parseInt(JintelModP2.getText())));
                 } else {
@@ -653,17 +664,20 @@ public class App {
                 int tempModNumP2 = parseInt(JhpP2.getText());
                 int tempPoolNumP2 = parseInt(JmodPoolP2.getText());
 
-                if (tempModNum <= 0) {
+                if (tempModNum <= 0 || tempModNumP2 <= 0) {
                     JOptionPane.showMessageDialog(null, "You can not start without picking a beast!");
                 }
-                if (tempPoolNum > 0) {
+                if (tempPoolNum > 0 || tempPoolNumP2 > 0) {
                     JOptionPane.showMessageDialog(null, "Please allocate all your modifiers");
                 }
+                //if (Jarea.getText().equalsIgnoreCase("area")) {
+                //    JOptionPane.showMessageDialog(null, "Please randomize environmental settings");
+                //}
                 if (tempModNum > 0 && tempPoolNum == 0 && tempModNumP2 == 0 && tempPoolNumP2 > 0) {
-                    Battle.start();
+                    Battle.start(playerStats.get(0), playerStats.get(1), playerStats.get(2), playerStats.get(3), playerStats.get(4), playerStats.get(5), playerStats.get(6), playerStats.get(7), playerStats.get(8), playerStats.get(9), playerStats.get(10), playerStats.get(11), playerStats.get(12), playerStats.get(13));
                 }
                 if (tempModNum > 0 && tempPoolNum == 0) {
-                    Battle.start();
+                    Battle.start(playerStats.get(0), playerStats.get(1), playerStats.get(2), playerStats.get(3), playerStats.get(4), playerStats.get(5), playerStats.get(6), playerStats.get(7), playerStats.get(8), playerStats.get(9), playerStats.get(10), playerStats.get(11), playerStats.get(12), playerStats.get(13));
                 }
 
             }
@@ -681,6 +695,7 @@ public class App {
             }
         });
     }
+
     public static void main(String[] args){
         try {
 
@@ -688,6 +703,7 @@ public class App {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+
 
 
 

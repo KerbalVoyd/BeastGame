@@ -37,5 +37,8 @@ public class MoveCreator {
         //Blood Thirster
         var bloodThirster = new Move("Blood Thirster", true, false, -1 ,100, "Slashing", "None", 5, 90, 3);
         App.globalMoveIndex.add(bloodThirster);
+
+        //var finalSpark = new Move("Final Spark", true, false, -1 ,100, "Slashing", "Radiant", 5, 90, 3);
+        //App.globalMoveIndex.add(bloodThirster);
     }
 }
