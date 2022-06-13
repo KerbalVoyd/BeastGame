@@ -1,4 +1,4 @@
 # BeastGame
-2 Beasts duke it out on a battlefield :D
-SHEESH GUYS GOOD GAME PLEASE PAY ME TO PLAY...
-Ye also Jacob you owe me 5 bucks
+Pick two beasts and modify them in 7 different attributes. The environment is completely random and can either work with you or against you.
+
+Make sure you set up all the modifiers and random weather/time before starting.
